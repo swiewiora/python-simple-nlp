@@ -1,6 +1,6 @@
 def get_length():
     str_word_length = input('Input length of a single word: ')
-    return int(str_word_length)
+    return int(str_word_length)  # todo try/catch
 
 
 def get_input_string():
