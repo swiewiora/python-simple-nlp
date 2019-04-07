@@ -1,31 +1,42 @@
-def read_file(file_name='input.txt'):
-    if file_name is None:
-        file_name = 'input.txt'
+def read_file(file_name):
+    """Reads input file. First line should contain size of array
+    (ValueException), others sequence of sentences.
+    :param file_name: input file name
+    :type file_name: str
+    :return (array length, input text)
+    :rtype (int, str)
+    :raise ValueError
+    """
     text = ''
 
     with open(file_name) as file:
         lines = file.readlines()
         iterator_lines = iter(lines or [])
         str_word_length = next(iterator_lines, None)
-        word_length = int(str_word_length)  # todo try/catch
+        try:
+            w = int(str_word_length)
+        except ValueError:
+            print('Word length is not an integer')
+            raise
 
         while True:
             sentence = next(iterator_lines, None)
             if sentence is None:
                 break
             if text == '':
-                text += sentence
+                text = sentence
             else:
                 text += ' ' + sentence
 
-    dictionary = dict()
-    dictionary['word_length'] = word_length
-    dictionary['text'] = text
-    return dictionary
+    return w, text
 
 
-def write_file(array_list, file_name='output.txt'):
-    if file_name is None:
-        file_name = 'output.txt'
+def write_file(array_list, file_name):
+    """"Write converted array list into output file.
+    :param array_list: list of character arrays
+    :type array_list: list of str
+    :param file_name: output file name
+    :type file_name: str
+    """
     with open(file_name, 'w') as file:
-        file.writelines("%s\n" % item for item in array_list)
+        file.writelines('\n'.join(array_list))
