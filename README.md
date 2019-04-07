@@ -38,12 +38,12 @@ Install Simple-NLP:
 If no parameters are given, programs runs in 'interactive' mode in which
 User will be asked to input data into terminal:
 
-    python simple-nlp
+    python simplenlp
     
 Output will be printed to console. To input data from file, second 
 parameter must be a name of an input file:
 
-    python simple-nlp input.txt
+    python simplenlp input.txt
     
 By default, program saves input to 'output.txt'. To rename output file,
 simply put it as second parameter:
